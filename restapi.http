@@ -2,3 +2,41 @@ GET http://localhost:8080/api/trigger/customers/5
 Accept: application/json
 
 ###
+
+GET http://localhost:8080/api/customers
+Accept: application/json
+
+###
+
+POST http://localhost:8080/api/customers
+content-type: application/json
+
+{
+  "id": 10096,
+"name": "error",
+"dateOfBirth": "1955-10-03"
+}
+
+###
+
+GET http://localhost:8080/api/customers/create
+Accept: application/json
+
+###
+GET http://localhost:8080/api/customers/get/10121
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/customers/create_error/10121
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/customers/create
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/customers/create/10121
+Accept: application/json
