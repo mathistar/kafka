@@ -25,11 +25,11 @@ public class ConsumerComponent {
   private final RetryService retryService;
 
   @KafkaListener(topics = {KafkaTopicConfig.CUSTOMER_TOPIC}, groupId = "customer_group")
-  public void onMessage(ConsumerRecord<String, Customer> consumerRecord,
+  public void onMessage(ConsumerRecord<String, Object> consumerRecord,
                         Acknowledgment acknowledgment,
                         @Nullable @Header(RetryService.RETRY_COUNT) String retryCountValue) {
     int retryCount = Integer.parseInt(Optional.ofNullable(retryCountValue).orElse("0"));
-    log.info("Customer in main : {} and retry count : {}", consumerRecord.key(), retryCount);
+    log.info("Customer in main : {} and retry count : {} and body {}", consumerRecord.key(), retryCount, consumerRecord.value());
     boolean nextTry = RandomUtils.nextBoolean();
     if (nextTry) {
       log.info("Retry process started ");

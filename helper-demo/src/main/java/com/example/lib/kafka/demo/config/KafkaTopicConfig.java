@@ -12,6 +12,7 @@ import org.springframework.kafka.config.TopicBuilder;
 @RequiredArgsConstructor
 public class KafkaTopicConfig {
   public static final String CUSTOMER_TOPIC = "customer-topic";
+  public static final String ADDRESS_TOPIC = "address-topic";
   public static final String CUSTOMER_RETRY_TOPIC = "customer-retry-topic";
   public static final String CUSTOMER_DEAD_TOPIC = "customer-dead-topic";
 
@@ -26,6 +27,14 @@ public class KafkaTopicConfig {
   @Bean
   public NewTopic customerTopics() {
     return TopicBuilder.name(CUSTOMER_TOPIC)
+      .partitions(1)
+      .replicas(1)
+      .build();
+  }
+
+  @Bean
+  public NewTopic addressTopics() {
+    return TopicBuilder.name(ADDRESS_TOPIC)
       .partitions(1)
       .replicas(1)
       .build();

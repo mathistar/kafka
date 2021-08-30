@@ -1,6 +1,7 @@
 package com.example.lib.kafka.demo.domain;
 
 import com.example.helper.annotation.EnableKafkaMessage;
+import com.example.lib.kafka.demo.config.KafkaTopicConfig;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
@@ -12,8 +13,7 @@ import javax.persistence.*;
 @Builder
 @Entity
 @ToString(exclude = "customer")
-//@EntityListeners(LastUpdateListeners.class)
-@EnableKafkaMessage(topic = "address_topic")
+@EnableKafkaMessage(topic = KafkaTopicConfig.ADDRESS_TOPIC)
 public class Address {
   @Id
   @GeneratedValue(

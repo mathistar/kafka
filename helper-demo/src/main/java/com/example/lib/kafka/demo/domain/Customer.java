@@ -1,6 +1,7 @@
 package com.example.lib.kafka.demo.domain;
 
 import com.example.helper.annotation.EnableKafkaMessage;
+import com.example.lib.kafka.demo.config.KafkaTopicConfig;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,8 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
-//@EntityListeners(LastUpdateListeners.class)
-@EnableKafkaMessage(topic = "customer_topic")
+@EnableKafkaMessage(topic = KafkaTopicConfig.CUSTOMER_TOPIC)
 public class Customer {
   @Id
   @GeneratedValue(
